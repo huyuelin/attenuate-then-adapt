@@ -1,0 +1,32 @@
+# Default Adaptive-OGP config (matches Algorithm 1 of the paper).
+#
+# This file is consumed by the full-scale experiment runners. The
+# ``--demo`` entry points in experiments/exp0X_*.py do not read YAML;
+# they use the in-code defaults in ``experiments/_trainer.py``.
+
+optimizer:
+  name: adaptive_ogp
+  lr: 1.0e-4
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  weight_decay: 0.0
+  routing: ogp              # vanilla | v_only | shared | ogp | reverse
+  alpha_max: 0.5
+
+schedule:
+  name: overlap_aware
+  beta_s: 0.98
+  warmup_steps: 0
+
+subspace:
+  rank: 32
+  buffer_capacity: 256
+  n_power_iterations: 2
+
+training:
+  batch_size: 32
+  gradient_accumulation: 1
+  seq_len: 1024
+  max_steps_per_task: 5000
+  collect_window: 256         # final steps per task used to refresh the basis
+  seed: 0

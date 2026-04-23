@@ -1,0 +1,27 @@
+# 256M HOPE-like 8-domain continual-LM configuration (Tables 1 and 5).
+#
+# The HOPE-like backbone is assumed to be provided by an external
+# trainer; this repository supplies only the optimizer, subspace, and
+# schedule pieces. Wire ``optimizer:`` into your trainer and set the
+# benchmark to ``eight_domain``.
+
+model:
+  name: hope_like_256m
+  d_model: 768
+  n_layers: 12
+  n_heads: 12
+  ffn_mult: 4
+  vocab_size: 50257
+
+benchmark:
+  name: eight_domain
+  root: ${DATA_ROOT:-./data/8domain}     # see scripts/download_benchmarks.sh
+  seq_len: 1024
+  batch_size: 32
+
+training:
+  max_steps_per_task: 10000
+  collect_window: 256
+  seed: 0
+
+optimizer: !include adaptive_ogp.yaml

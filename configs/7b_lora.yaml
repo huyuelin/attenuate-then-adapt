@@ -1,0 +1,35 @@
+# 7B LoRA configuration for the TRACE benchmark (Section 5 / breadth).
+#
+# Resource ceiling: 8xA100 80GB. The paper reports OGP reaching a
+# 2.2-unit advantage over the strongest matched-budget parameter-level
+# baseline under LoRA at 7B. QLoRA is explicitly out of scope.
+
+model:
+  name: llama2_7b
+  lora:
+    rank: 16
+    alpha: 32
+    dropout: 0.05
+    target_modules: [q_proj, k_proj, v_proj, o_proj]
+
+benchmark:
+  name: trace
+  root: ${TRACE_ROOT:?please set TRACE_ROOT to your local TRACE install}
+  max_examples_per_task: 2048
+  seq_len: 2048
+  batch_size: 4
+  grad_accum: 8
+
+training:
+  max_steps_per_task: 2000
+  collect_window: 128
+  seed: 0
+  precision: bf16
+
+hardware:
+  gpus: 8
+  gpu_type: a100
+  fsdp: full_shard
+  optimizer_state_sharding: zero2
+
+optimizer: !include adaptive_ogp.yaml

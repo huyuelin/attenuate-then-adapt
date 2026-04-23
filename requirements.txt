@@ -1,0 +1,10 @@
+# Runtime dependencies.
+# Conservative pins; no GPU-specific wheels required for the demo path.
+torch>=1.13
+numpy>=1.21
+matplotlib>=3.5
+pyyaml>=5.4
+
+# Development-only (install with `pip install -e .[dev]` instead).
+# pytest>=7.0
+# pytest-cov>=4.0

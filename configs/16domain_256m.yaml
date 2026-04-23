@@ -1,0 +1,27 @@
+# 16-domain long-sequence extension (Appendix).
+#
+# Identical backbone to 8domain_256m.yaml; the stream is simply twice
+# as long. The adaptive schedule and subspace refresh settings are the
+# same; the paper shows that the Adaptive-OGP vs. shared-routing gap
+# widens to 4.5-4.8 forgetting units at 16 domains.
+
+model:
+  name: hope_like_256m
+  d_model: 768
+  n_layers: 12
+  n_heads: 12
+  ffn_mult: 4
+  vocab_size: 50257
+
+benchmark:
+  name: sixteen_domain
+  root: ${DATA_ROOT:-./data/16domain}
+  seq_len: 1024
+  batch_size: 32
+
+training:
+  max_steps_per_task: 8000
+  collect_window: 256
+  seed: 0
+
+optimizer: !include adaptive_ogp.yaml

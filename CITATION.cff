@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying NeurIPS 2026 submission."
+title: "Adaptive-OGP: Hidden Failure Modes of Gradient Modification under Adam in Continual Learning, and Adaptive Decoupled Moment Routing as a Repair"
+version: 0.1.0
+date-released: "2026-01-01"
+license: MIT
+authors:
+  - name: "Anonymous Authors"
+preferred-citation:
+  type: conference-paper
+  title: "Hidden Failure Modes of Gradient Modification under Adam in Continual Learning, and Adaptive Decoupled Moment Routing as a Repair"
+  year: 2026
+  authors:
+    - name: "Anonymous Authors"
+  collection-title: "Advances in Neural Information Processing Systems 39 (NeurIPS 2026)"
+  notes: "Under double-blind review. De-anonymized citation will be provided after the review period."

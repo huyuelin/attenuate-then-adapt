@@ -1,0 +1,52 @@
+# Shared configuration block for baseline methods (Table 7 entries).
+#
+# Each baseline is identified by a top-level key. Where hyperparameters
+# match Adaptive-OGP (lr, betas, eps, etc.) the values are intentionally
+# identical so that cross-method comparisons are held protocol-faithful.
+
+adam_vanilla:
+  lr: 1.0e-4
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  weight_decay: 0.0
+
+fopng:
+  lr: 1.0e-4
+  alpha: 0.5
+  subspace_rank: 32
+  routing: shared
+
+adam_nscl:
+  lr: 1.0e-4
+  alpha: 0.5
+  subspace_rank: 32
+  routing: shared
+
+ogd:
+  lr: 1.0e-4
+  subspace_rank: 32
+  routing: shared
+  alpha: 1.0
+  sigma_scaling: false
+
+gpm:
+  lr: 1.0e-4
+  subspace_rank: 32
+  routing: shared
+  alpha: 1.0
+  sigma_scaling: false
+
+ewc:
+  lr: 1.0e-4
+  lambda_penalty: 0.5
+  fisher_batches: 32
+
+si:
+  lr: 1.0e-4
+  lambda_penalty: 0.5
+  damping: 1.0e-3
+
+replay_shared:
+  lr: 1.0e-4
+  rho_mix: 0.5
+  buffer_fraction: 0.005         # 0.5% of training data
