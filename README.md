@@ -8,6 +8,10 @@ Anonymous authors, NeurIPS 2026 double-blind submission.
 
 This repository will be de-anonymized after the review period.
 
+## Overview
+
+![Architecture overview](figures/overview_figure.png)
+
 ## Abstract
 
 Many continual-learning methods modify the gradient upstream (projection,
